@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import requests
 
 
 """
@@ -25,7 +26,9 @@ Either like the title above by just creating a string (or an f-string) starting.
 - body mass (in g)
 - sex ("Male" or "Female")
 """
-island = st.text_input('Island')
+island_list = ['Dream', 'Biscoe', 'Torgersen']
+
+island = st.selectbox('Island', island_list)
 bill_length_mm = st.number_input('Bill Length (mm)')
 bill_depth_mm = st.number_input('Bill Depth (mm)')
 flipper_length_mm = st.number_input('Flipper Length (mm)')
@@ -59,3 +62,19 @@ What are the steps to follow in order to call an API ?
 
 ## Finally, we can display the prediction to the user
 """
+
+api_url = "http://localhost:8001/predict"
+
+api_dict = {
+    "island": island,
+    "bill_length_mm": bill_length_mm,
+    "bill_depth_mm": bill_depth_mm,
+    "flipper_length_mm": flipper_length_mm,
+    "body_mass_g": body_mass_g,
+    "sex": sex
+}
+
+res = requests.get(api_url, params=api_dict)
+st.write(res.url)
+prediction = res.json()['prediction']
+st.write(f"The penguin is most likely a {prediction}")
