@@ -33,7 +33,7 @@ bill_length_mm = st.number_input('Bill Length (mm)')
 bill_depth_mm = st.number_input('Bill Depth (mm)')
 flipper_length_mm = st.number_input('Flipper Length (mm)')
 body_mass_g = st.number_input('Body Mass (g)')
-sex = st.text_input('Sex')
+sex = st.selectbox('Sex', ['Male', 'Female'])
 
 st.write(f"The penguin is from {island}" + "  " + "\n"
         + f"Has a bill length of {bill_length_mm}" + "  " + "\n"
