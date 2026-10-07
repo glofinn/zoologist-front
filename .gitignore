@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 *.egg-info
+secrets.toml
 
 # Virtual environments
 .venv

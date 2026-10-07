@@ -63,7 +63,7 @@ What are the steps to follow in order to call an API ?
 ## Finally, we can display the prediction to the user
 """
 
-api_url = "http://localhost:8001/predict"
+api_url = st.secrets['API_URL']
 
 api_dict = {
     "island": island,
